@@ -27,6 +27,13 @@ class Settings(BaseSettings):
     GEMINI_API_KEY: str
     OPENAI_API_KEY: str
 
+    # -------------------------
+    # LangSmith
+    # -------------------------
+    LANGSMITH_API_KEY: str | None = None
+    LANGSMITH_TRACING: bool = False
+    LANGSMITH_PROJECT: str = "Hanabneho"
+
     model_config = SettingsConfigDict(
         env_file=".env",
         case_sensitive=True,

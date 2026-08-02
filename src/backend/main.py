@@ -1,10 +1,13 @@
 from fastapi import FastAPI
 
+from backend.intelligence.langsmith_config import configure_langsmith
 from backend.api.router import api_router
 from backend.core.config import settings
 from backend.core.constants import API_PREFIX
 from backend.core.exceptions import register_exception_handlers
 from backend.database.init_db import init_database
+
+configure_langsmith()
 
 app = FastAPI(
     title=settings.APP_NAME,
