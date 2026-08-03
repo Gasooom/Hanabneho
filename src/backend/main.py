@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 from backend.intelligence.langsmith_config import configure_langsmith
 from backend.api.router import api_router
@@ -15,6 +16,19 @@ app = FastAPI(
     version=settings.APP_VERSION,
 )
 
+# ----------------------------
+# CORS
+# ----------------------------
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:3000",
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 # Register global exception handlers
 register_exception_handlers(app)
 
@@ -28,6 +42,7 @@ def root():
         "docs": "/docs",
         "health": f"{API_PREFIX}/health",
     }
+
 
 # Initialize database
 init_database()

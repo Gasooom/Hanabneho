@@ -4,6 +4,9 @@ from backend.domain.report import Report
 from backend.repositories.base_report_repository import (
     ReportRepository,
 )
+from backend.schemas.dashboard_report import (
+    DashboardReportResponse,
+)
 
 
 class InMemoryReportRepository(ReportRepository):
@@ -31,3 +34,8 @@ class InMemoryReportRepository(ReportRepository):
         self,
     ) -> list[Report]:
         return list(self._reports.values())
+
+    def list_dashboard_reports(
+        self,
+    ) -> list[DashboardReportResponse]:
+        return []

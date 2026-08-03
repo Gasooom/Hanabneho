@@ -1,6 +1,9 @@
 from abc import ABC, abstractmethod
 
 from backend.domain.report import Report
+from backend.schemas.dashboard_report import (
+    DashboardReportResponse,
+)
 
 
 class ReportRepository(ABC):
@@ -26,4 +29,10 @@ class ReportRepository(ABC):
     def list_all(
         self,
     ) -> list[Report]:
+        raise NotImplementedError
+
+    @abstractmethod
+    def list_dashboard_reports(
+        self,
+    ) -> list[DashboardReportResponse]:
         raise NotImplementedError

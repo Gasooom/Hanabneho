@@ -2,17 +2,15 @@ from backend.domain.report import Report
 from backend.repositories.base_report_repository import (
     ReportRepository,
 )
+from backend.schemas.dashboard_report import (
+    DashboardReportResponse,
+)
 from backend.schemas.report import CreateReportRequest
 
 
 class ReportService:
     """
     Handles report-related business operations.
-
-    The service depends on the repository abstraction rather than
-    a concrete implementation. This allows different persistence
-    strategies (in-memory, SQLite, PostgreSQL, etc.) without
-    modifying business logic.
     """
 
     def __init__(
@@ -25,9 +23,6 @@ class ReportService:
         self,
         request: CreateReportRequest,
     ) -> Report:
-        """
-        Create a new report and persist it.
-        """
 
         report = Report(
             title=request.title,
@@ -40,17 +35,17 @@ class ReportService:
         self,
         report_id: str,
     ) -> Report | None:
-        """
-        Retrieve a report by its unique identifier.
-        """
 
         return self.repository.get_by_id(report_id)
 
     def list_reports(
         self,
     ) -> list[Report]:
-        """
-        Retrieve all stored reports.
-        """
 
         return self.repository.list_all()
+
+    def list_dashboard_reports(
+        self,
+    ) -> list[DashboardReportResponse]:
+
+        return self.repository.list_dashboard_reports()

@@ -22,7 +22,7 @@ router = APIRouter(
     response_model=AnalysisApiResponse,
 )
 async def analyze_report(
-    description: str = Form(...),
+    description: str = Form(""),
     image: UploadFile = File(...),
 ):
     """
@@ -31,7 +31,10 @@ async def analyze_report(
 
     suffix = Path(image.filename).suffix or ".jpg"
 
-    with NamedTemporaryFile(delete=False, suffix=suffix) as temp:
+    with NamedTemporaryFile(
+        delete=False,
+        suffix=suffix,
+    ) as temp:
         temp.write(await image.read())
         temp_path = Path(temp.name)
 
@@ -40,11 +43,15 @@ async def analyze_report(
             report_id="manual-analysis",
             text=description,
             images=[
-                ImageEvidence(str(temp_path)),
+                ImageEvidence(
+                    url=str(temp_path)
+                )
             ],
         )
 
-        analysis = analysis_service.analyze(evidence)
+        analysis = analysis_service.analyze(
+            evidence
+        )
 
         return AnalysisApiResponse(
             success=True,
