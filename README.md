@@ -154,19 +154,25 @@ The backend follows Clean Architecture, separating Domain, Services, Repositorie
 
 ## Landing Page
 
-*(Add Screenshot)*
+![Landing Page](assets/landing-page.png)
+
+---
 
 ## Citizen Reporting
 
-*(Add Screenshot)*
+![Citizen Reporting](assets/citizen-report.png)
+
+---
 
 ## AI Assessment
 
-*(Add Screenshot)*
+![AI Assessment](assets/ai-assessment.png)
+
+---
 
 ## Operations Dashboard
 
-*(Add Screenshot)*
+![Operations Dashboard](assets/operations-dashboard.png)
 
 ---
 
