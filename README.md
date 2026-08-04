@@ -1,106 +1,121 @@
 # Hanabneho
 
-> **Every damaged road, school, bridge, or power line delays someone's recovery. Hanabneho transforms a single image into actionable intelligence, helping decision-makers respond faster when every decision matters.**
+> **Rebuilding Communities with Artificial Intelligence.**
 
-Hanabneho is an AI-powered infrastructure damage assessment platform that combines multimodal AI and agentic reasoning to support governments, municipalities, humanitarian organizations, and emergency response teams in prioritizing recovery efforts.
+## A single photo can reveal a damaged road.
 
-Instead of manually reviewing hundreds or thousands of citizen reports, Hanabneho analyzes infrastructure damage from a single image, evaluates its severity, explains its reasoning, and recommends the authority best positioned to respond.
+But it cannot tell us what should happen next.
 
-The platform was inspired by a simple belief:
+After a disaster or conflict, communities don't suffer from a lack of information. They suffer from a lack of time.
 
-> **Artificial Intelligence should not only generate content. It should help solve problems that affect people's lives.**
+Every day, citizens capture photos of collapsed bridges, damaged roads, destroyed schools, and failing electrical infrastructure. Those images contain valuable information, but turning thousands of reports into coordinated recovery decisions remains a slow and largely manual process.
 
----
+Someone has to review every report, understand what happened, estimate the severity, determine who is responsible, and decide what deserves immediate attention.
 
-# The Story Behind Hanabneho
+That delay has real consequences.
 
-Recovery is rarely delayed because people don't care.
+I kept asking myself one question.
 
-It is delayed because decision-makers must make difficult choices with limited information, limited resources, and limited time.
+> **What if a single photo could become the starting point for rebuilding a community?**
 
-After conflicts, natural disasters, or infrastructure failures, roads become inaccessible, power networks collapse, hospitals become unsafe, and public services are disrupted. Citizens begin reporting what they see, but manually reviewing every report quickly becomes impossible.
+That question became Hanabneho.
 
-Some incidents demand immediate attention.
+Rather than building another AI demo, I wanted to explore how Artificial Intelligence could support real decision-making.
 
-Others can wait.
+Hanabneho transforms an unstructured citizen report into structured recovery intelligence.
 
-The challenge is knowing the difference.
+A citizen uploads a photo.
 
-Hanabneho was created to explore how modern AI can assist—not replace—human decision-makers by transforming unstructured visual evidence into structured operational intelligence.
+Behind the scenes, AI analyzes the damage, reasons about its impact, recommends the responsible authority, and stores the assessment in an operational dashboard where recovery teams can prioritize what matters most.
 
-While inspired by lessons from Sudan's recovery journey, the underlying challenge exists anywhere communities must rebuild under pressure.
+The project was inspired by Sudan's recovery journey, but the challenge extends far beyond one country.
 
----
+Communities everywhere face the same question after a crisis:
 
-# The Solution
+> **How do we transform thousands of reports into faster, smarter recovery decisions?**
 
-Hanabneho transforms a citizen-submitted image into an actionable recovery assessment.
-
-The AI system automatically:
-
-- Detects infrastructure damage using multimodal vision models
-- Generates a structured damage summary
-- Estimates severity and potential public impact
-- Explains its reasoning transparently
-- Identifies the authority responsible for responding
-- Produces consistent information that supports faster operational decisions
-
-The objective is not automated decision-making.
-
-The objective is better human decision-making.
+Hanabneho is my attempt to answer that question.
 
 ---
 
-# AI Architecture
+# From an Idea to an AI System
 
-Hanabneho is designed as an agentic AI workflow where multiple specialized components collaborate to solve a complex real-world task.
+Building Hanabneho wasn't just about integrating a vision model into a web application.
+
+The goal was to design a complete AI workflow capable of transforming unstructured citizen reports into structured information that supports real recovery decisions.
+
+To achieve that, I approached the project as an AI engineering problem rather than a machine learning experiment.
+
+Instead of asking:
+
+> *"Can the model recognize infrastructure damage?"*
+
+I asked:
+
+> *"How should an intelligent system reason about this report from the moment a citizen submits it until it reaches the people responsible for taking action?"*
+
+That perspective shaped every architectural decision in this project.
+
+---
+
+# How Hanabneho Works
+
+The experience is intentionally simple for the citizen.
+
+1. A citizen uploads an image of damaged infrastructure with a short description.
+2. The backend creates a report and stores the submitted evidence.
+3. An AI workflow analyzes the infrastructure damage.
+4. The system estimates severity and generates a structured assessment.
+5. The appropriate authority is recommended.
+6. The assessment is stored and becomes available in the operational dashboard for monitoring and prioritization.
 
 ```text
-Citizen Report
-        │
-        ▼
-Image Upload
-        │
-        ▼
-Vision Agent
-(Understands infrastructure damage)
-        │
-        ▼
-Reasoning Agent
-(Evaluates severity & impact)
-        │
-        ▼
-Authority Routing Agent
-(Identifies responsible organization)
-        │
-        ▼
-Structured Recovery Assessment
+Citizen
+      │
+      ▼
+Submit Report
+      │
+      ▼
+AI Vision Analysis
+      │
+      ▼
+Reasoning Engine
+      │
+      ▼
+Damage Assessment
+      │
+      ▼
+Authority Recommendation
+      │
+      ▼
+Operations Dashboard
 ```
-
-Rather than relying on a single prompt, the platform separates perception, reasoning, and routing into independent responsibilities, producing outputs that are easier to understand, extend, and maintain.
 
 ---
 
-# Technical Highlights
+# Engineering Decisions
 
-Hanabneho demonstrates practical AI engineering across multiple layers of an end-to-end production-style system.
+Hanabneho was built around a few principles that I believe are essential when developing AI applications.
 
-### Artificial Intelligence
+### AI should support decisions, not replace them.
 
-- OpenAI GPT-4.1 Vision
-- LangGraph agent orchestration
-- Multimodal reasoning
-- Structured AI outputs
-- Explainable recommendations
+The objective is not to automate human judgment, but to provide structured information that helps decision-makers respond more efficiently.
 
-### Backend
+### Architecture matters as much as the model.
 
-- FastAPI
-- Clean Architecture
-- Repository Pattern
-- Service Layer
-- SQLite
-- SQLAlchemy
+The backend follows a layered architecture that separates domain logic, repositories, services, API endpoints, and AI components. This keeps the system maintainable, testable, and easy to extend.
+
+### AI is one component of a larger system.
+
+A useful AI product requires much more than inference. It also needs reliable APIs, persistence, data flow, and a user experience that fits the people who will actually use it.
+
+### Real-world problems deserve end-to-end solutions.
+
+Hanabneho is more than an image analysis application. It demonstrates how AI can be integrated into a complete workflow that transforms raw citizen reports into actionable recovery intelligence.
+
+---
+
+# Technologies
 
 ### Frontend
 
@@ -109,41 +124,102 @@ Hanabneho demonstrates practical AI engineering across multiple layers of an end
 - TypeScript
 - Tailwind CSS
 
----
+### Backend
 
-# Why This Project Matters
+- FastAPI
+- Python
+- SQLAlchemy
+- SQLite
 
-Many AI demonstrations stop after generating an answer.
+### Artificial Intelligence
 
-Hanabneho focuses on what happens next.
-
-The platform explores how AI can become part of real operational workflows by helping organizations prioritize incidents, coordinate responses, and accelerate recovery.
-
-It represents my approach to AI engineering:
-
-**Building intelligent systems that augment human decision-making where speed, accuracy, and impact matter.**
-
----
-
-# Vision
-
-I believe the future of AI engineering is not about building larger models.
-
-It is about building systems that combine reasoning, perception, and software engineering to solve meaningful problems.
-
-Hanabneho reflects that philosophy.
-
-It demonstrates how multimodal AI, agentic workflows, and modern backend engineering can work together to create practical tools for society—not just impressive demonstrations.
+- OpenAI GPT-4.1 Vision
+- LangGraph
+- Multi-Agent Workflow
 
 ---
 
-# About the Author
+# Project Structure
 
-## Abualgasim Ibrahim
+```text
+frontend/
+backend/
+```
 
-AI Engineer focused on designing production-ready intelligent systems that solve real-world challenges through multimodal AI, agentic workflows, retrieval systems, and modern software architecture.
+The backend follows Clean Architecture, separating Domain, Services, Repositories, API, Database, and AI Intelligence into independent layers.
 
-My long-term mission is to build AI technologies that create measurable impact for communities, organizations, and public institutions.
+---
+
+# Screenshots
+
+## Landing Page
+
+*(Add Screenshot)*
+
+## Citizen Reporting
+
+*(Add Screenshot)*
+
+## AI Assessment
+
+*(Add Screenshot)*
+
+## Operations Dashboard
+
+*(Add Screenshot)*
+
+---
+
+# Running the Project
+
+## Backend
+
+```bash
+cd backend
+
+uv sync
+
+uv run uvicorn backend.main:app --reload
+```
+
+## Frontend
+
+```bash
+cd frontend
+
+npm install
+
+npm run dev
+```
+
+---
+
+# Future Work
+
+- Interactive maps for incident visualization
+- Retrieval-Augmented Generation (RAG) for recovery guidelines
+- Real-time notifications
+- Country-specific authority routing
+- Satellite imagery integration
+- Historical recovery analytics
+- Citizen report tracking
+
+---
+
+# What I Learned
+
+Hanabneho taught me that building AI products is not only about choosing the right model.
+
+It is about designing systems where AI, software architecture, data persistence, APIs, and user experience work together to solve a meaningful problem.
+
+This project strengthened my understanding of building AI systems that move beyond prediction and actively support real-world decision-making.
+
+---
+
+# About Me
+
+I'm **Abualgasim Ibrahim**, an AI Engineer passionate about building intelligent systems that solve meaningful real-world problems.
+
 
 ---
 

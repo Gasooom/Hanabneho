@@ -8,8 +8,8 @@ def test_create_report():
     service = ReportService(repository)
 
     request = CreateReportRequest(
-        title="Broken Water Pipe",
-        description="Large water leak near the primary school.",
+        title="Bridge Structural Damage",
+        description="Visible structural cracks detected on the bridge, creating a potential safety hazard for vehicles and pedestrians.",
     )
 
     report = service.create_report(request)
@@ -24,8 +24,8 @@ def test_get_report():
     service = ReportService(repository)
 
     request = CreateReportRequest(
-        title="Power Outage",
-        description="Electricity has been down for two hours.",
+        title="Electrical Pole Fire",
+        description="Transformer fire damaged electrical infrastructure and interrupted power supply in the surrounding area.",
     )
 
     created_report = service.create_report(request)
@@ -40,13 +40,13 @@ def test_list_reports():
     service = ReportService(repository)
 
     request1 = CreateReportRequest(
-        title="Road Damage",
-        description="Large pothole on the main road.",
+        title="Road Surface Collapse",
+        description="Road surface collapsed after heavy rainfall, creating a large sinkhole that blocks traffic.",
     )
 
     request2 = CreateReportRequest(
-        title="Street Light",
-        description="Street light has stopped working.",
+        title="Flooded Drainage System",
+        description="Blocked drainage system causing localized flooding and restricting access to nearby roads.",
     )
 
     service.create_report(request1)

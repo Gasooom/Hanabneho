@@ -1,6 +1,8 @@
 from abc import ABC, abstractmethod
 
+from backend.domain.evidence import Evidence
 from backend.domain.report import Report
+from backend.intelligence.models.ai_analysis import AIAnalysis
 from backend.schemas.dashboard_report import (
     DashboardReportResponse,
 )
@@ -35,4 +37,13 @@ class ReportRepository(ABC):
     def list_dashboard_reports(
         self,
     ) -> list[DashboardReportResponse]:
+        raise NotImplementedError
+
+    @abstractmethod
+    def save_analysis_bundle(
+        self,
+        report: Report,
+        evidence: Evidence,
+        analysis: AIAnalysis,
+    ) -> Report:
         raise NotImplementedError

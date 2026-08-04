@@ -6,8 +6,8 @@ def test_save_report():
     repository = InMemoryReportRepository()
 
     report = Report(
-        title="Broken Water Pipe",
-        description="Large water leak near the primary school.",
+        title="Water Pipeline Failure",
+        description="Major underground water pipeline rupture causing continuous leakage and disruption to nearby neighborhoods.",
     )
 
     saved_report = repository.save(report)
@@ -20,8 +20,8 @@ def test_get_report_by_id():
     repository = InMemoryReportRepository()
 
     report = Report(
-        title="Power Outage",
-        description="Electricity has been down for two hours.",
+        title="Electrical Pole Fire",
+        description="Transformer fire damaged electrical infrastructure and interrupted power supply in the surrounding area.",
     )
 
     repository.save(report)
@@ -43,13 +43,13 @@ def test_list_all_reports():
     repository = InMemoryReportRepository()
 
     report1 = Report(
-        title="Broken Water Pipe",
-        description="Large water leak.",
+        title="Flooded Drainage System",
+        description="Blocked drainage system causing localized flooding and restricting access to nearby roads.",
     )
 
     report2 = Report(
-        title="Road Damage",
-        description="Large pothole on the main road.",
+        title="Road Surface Collapse",
+        description="Road surface collapsed after heavy rainfall, creating a large sinkhole that blocks traffic.",
     )
 
     repository.save(report1)

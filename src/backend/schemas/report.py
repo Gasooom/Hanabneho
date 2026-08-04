@@ -16,7 +16,7 @@ class CreateReportRequest(BaseModel):
         min_length=5,
         max_length=150,
         description="Short title describing the incident.",
-        examples=["Broken Water Pipe"],
+        examples=["Water Pipeline Failure"],
     )
 
     description: str = Field(
@@ -24,7 +24,9 @@ class CreateReportRequest(BaseModel):
         min_length=10,
         max_length=2000,
         description="Detailed description of the incident.",
-        examples=["Large water leak near the primary school."],
+        examples=[
+            "Major underground water pipeline rupture causing continuous leakage and disruption to nearby neighborhoods.",
+        ],
     )
 
 

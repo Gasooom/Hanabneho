@@ -1,6 +1,8 @@
-from backend.database.models import AnalysisModel, ReportModel
+from backend.database.models import AnalysisModel, EvidenceModel, ImageModel, ReportModel
 from backend.database.session import SessionLocal
+from backend.domain.evidence import Evidence
 from backend.domain.report import Report
+from backend.intelligence.models.ai_analysis import AIAnalysis
 from backend.repositories.base_report_repository import (
     ReportRepository,
 )
@@ -111,3 +113,56 @@ class SQLReportRepository(ReportRepository):
                 )
                 for report, analysis in rows
             ]
+
+    def save_analysis_bundle(
+        self,
+        report: Report,
+        evidence: Evidence,
+        analysis: AIAnalysis,
+    ) -> Report:
+
+        with SessionLocal() as session:
+
+            report_model = ReportModel(
+                report_id=report.report_id,
+                title=report.title,
+                description=report.description,
+                status=report.status,
+                created_at=report.created_at,
+            )
+
+            evidence_model = EvidenceModel(
+                evidence_id=evidence.evidence_id,
+                report_id=evidence.report_id,
+                text=evidence.text,
+                latitude=evidence.latitude,
+                longitude=evidence.longitude,
+                source=evidence.source,
+                created_at=evidence.created_at,
+            )
+
+            analysis_model = AnalysisModel(
+                report_id=report.report_id,
+                summary=analysis.summary,
+                category=analysis.category,
+                severity=analysis.severity,
+                confidence=analysis.confidence,
+                recommended_authority=analysis.recommended_authority,
+                reasoning=analysis.reasoning,
+            )
+
+            session.add(report_model)
+            session.add(evidence_model)
+            session.add(analysis_model)
+
+            for image in evidence.images:
+                session.add(
+                    ImageModel(
+                        evidence_id=evidence.evidence_id,
+                        image_path=image.url,
+                    )
+                )
+
+            session.commit()
+
+        return report
